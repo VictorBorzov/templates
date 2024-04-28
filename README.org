@@ -2,5 +2,5 @@
 
 To use a dotnet template run:
 #+begin_src shell
-  nix flake init -t git+ssh://git@gitlab.com/victorborzov/dotfiles#dotnet
+  nix flake init -t git+ssh://git@gitlab.com/victorborzov/templates#dotnet
 #+end_src
