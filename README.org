@@ -1,5 +1,4 @@
-# Nix templates
-
+* Nix templates
 
 To use a dotnet template run:
 #+begin_src shell
