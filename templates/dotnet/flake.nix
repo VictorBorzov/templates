@@ -18,6 +18,9 @@
           "-p:InvariantGlobalization=true"
           "-p:PublishTrimmed=true"
           "-p:PublishSingleFile=true"
+          "-p:IncludeNativeLibrariesForSelfExtract=True"
+          "-p:DebugType=None"
+          "-p:DebugSymbols=False"
         ];
         executables = [ "HelloWorld" ];
       };
