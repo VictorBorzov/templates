@@ -4,13 +4,15 @@
   inputs = { nixpkgs.url = "nixpkgs/nixos-unstable"; };
 
   outputs = { self, nixpkgs }:
-    let pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    let
+      pkgs = nixpkgs.legacyPackages.x86_64-linux;
+      projectName = "HelloWorld";
     in {
       packages.x86_64-linux.default = pkgs.buildDotnetModule {
-        pname = "HelloWorld";
+        pname = projectName;
         version = "0.1";
         src = ./.;
-        projectFile = "./HelloWorld.csproj";
+        projectFile = "./${projectName}.csproj";
         nugetDeps = ./deps.nix;
         dotnet-sdk = pkgs.dotnetCorePackages.dotnet_8.sdk;
         selfContainedBuild = true;
@@ -22,7 +24,7 @@
           "-p:DebugType=None"
           "-p:DebugSymbols=False"
         ];
-        executables = [ "HelloWorld" ];
+        executables = [ projectName ];
       };
     };
 }
