@@ -10,8 +10,7 @@ Use nix run
 To update nuget packages:
 #+begin_src shell
   dotnet restore --packages ./packages
-  nix run nixpkgs#nuget-to-nix
-  nuget-to-nix packages > deps.nix
+  nix run nixpkgs#nuget-to-nix ./packages > deps.nix
 #+end_src
 
 * Template
