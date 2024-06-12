@@ -8,14 +8,14 @@
   outputs = { self, nixpkgs }:
     {
       templates = {
-        aspnet = {
-          path = ./templates/aspnet;
-          description = "Dotnet web application template";
-        };
         dotnet = {
           path = ./templates/dotnet;
           description = "Dotnet application template";
         };
+          helix = {
+            path = ./templates/helix;
+            description = "Helix workspace template";
+          };
       };
     };
 }
