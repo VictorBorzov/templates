@@ -1,6 +1,6 @@
 [[language]]
 name = "nix"
-formatter = { command = "nixpkgs-fmt" }
+formatter = { command = "alejandra" }
 
 [language-server.rust-analyzer.config.check]
 command = "clippy"
@@ -9,3 +9,7 @@ command = "clippy"
 name = "go"
 auto-format = true
 formatter = { command = "goimports" }
+
+[[language]]
+name = "markdown"
+language-servers = [ "marksman", "ltex-ls" ]
