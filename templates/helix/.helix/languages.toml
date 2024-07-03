@@ -12,4 +12,4 @@ formatter = { command = "goimports" }
 
 [[language]]
 name = "markdown"
-language-servers = [ "marksman", "ltex-ls" ]
+language-servers = [ "markdown-oxide", "ltex-ls" ]
