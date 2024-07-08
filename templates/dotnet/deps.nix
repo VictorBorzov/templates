@@ -1,1 +1,1 @@
-{ fetchNuGet }: [ ]
+{fetchNuGet}: []

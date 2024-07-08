@@ -1,15 +1,32 @@
 {
-  description = "Rust app build";
-  inputs = { nixpkgs.url = "nixpkgs/nixos-unstable"; };
-  outputs = { self, nixpkgs }:
-    let pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in {
-      packages.x86_64-linux.default = pkgs.rustPlatform.buildRustPackage {
-        pname = "app_name";
-        version = "0.1.0";
-        src = ./.;
+  description = "My rust app";
 
-        cargoLock = { lockFile = ./Cargo.lock; };
-      };
-    };
+  inputs = {
+    nixpkgs.url = "nixpkgs/nixos-unstable";
+    myDevTools.url = "gitlab:victorborzov/dev";
+    flake-utils.url = "github:numtide/flake-utils";
+  };
+
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    myDevTools,
+  }:
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = import nixpkgs {inherit system;};
+      in {
+        packages = {
+          default = pkgs.rustPlatform.buildRustPackage {
+            pname = "app_name";
+            version = "0.1.0";
+            src = ./.;
+            cargoLock = {lockFile = ./Cargo.lock;};
+          };
+        };
+
+        devShell = myDevTools.devShells.${system}.rust;
+      }
+    );
 }

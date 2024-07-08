@@ -1,6 +1,13 @@
 * Nix templates
 
-To use a dotnet template run:
+Available via =git+ssh://git@gitlab.com/victorborzov/templates#dotnet=.
+
+1. To use a dotnet template run:
 #+begin_src shell
-  nix flake init -t git+ssh://git@gitlab.com/victorborzov/templates#dotnet
+  nix flake init -t gitlab:victorborzov/templates#dotnet
+#+end_src
+
+2. To use a rust template run:
+#+begin_src shell
+  nix flake init -t gitlab:victorborzov/templates#rust
 #+end_src
