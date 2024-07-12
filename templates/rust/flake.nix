@@ -16,7 +16,7 @@
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = import nixpkgs {inherit system;};
-        appName = "guessing_game";
+        appName = "my_app";
         app = pkgs.rustPlatform.buildRustPackage {
           pname = appName;
           version = "0.1.0";
@@ -29,9 +29,9 @@
           docker = pkgs.dockerTools.buildLayeredImage {
             name = appName;
             tag = "latest";
+            contents = [ app ];
             config = {
-              Cmd = ["${app}/${appName}"];
-              WorkingDir = "/root";
+              Cmd = [appName];
             };
           };
         };
